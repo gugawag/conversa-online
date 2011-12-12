@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich">
+
+<h:head>
+	<title>Cadastro de Usuário</title>
+	<link href="./css/styles.css" rel="stylesheet" type="text/css" />
+</h:head>
+
+<h:body>
+	<h:form>
+		<rich:panel>
+			<h:panelGrid columns="2">
+				<h:outputText value="Nome:" />
+				<h:inputText id="nome" value="#{usuarioBean.usuario.nome}" label="Nome"/>
+				
+				<h:outputText value="email:" />
+				
+				<h:panelGroup>
+					<h:inputText id="email" value="#{usuarioBean.usuario.email}" label="Email">
+						<f:validator validatorId="com.gugawag.primeirojsf.validadores.Email"/>
+						<!-- AJAX -->
+					</h:inputText>
+					<h:message for="email" id="mEmail" style="color:red"/>
+				</h:panelGroup>
+				
+				<h:outputText value="Estado:" />
+				<h:selectOneMenu id="estado" value="#{usuarioBean.usuario.uf}" label="Estado">
+					<f:selectItems value="#{usuarioBean.ufs}"/>
+					<!-- AJAX - Para os alunos -->
+				</h:selectOneMenu>
+				
+				<h:outputText value="Cidade:" />
+				<h:selectOneMenu id="cidade" value="#{usuarioBean.usuario.cidade}" label="Cidade">
+					<f:selectItems value="#{usuarioBean.cidades}"/>
+				</h:selectOneMenu>
+				
+				<h:outputText value="Login:" />
+				<h:inputText id="login" value="#{usuarioBean.usuario.login}" label="Login"/>
+				
+				<h:outputText value="Senha:" />
+				<h:inputText id="senha" value="#{usuarioBean.usuario.senha}" label="Senha"/>
+
+				<h:outputText value="Redigitar senha:" />				
+				<h:panelGroup>
+					<h:inputText id="senhaRedigitada" value="#{usuarioBean.senhaRedigitada}" label="Senha Redigitada">
+						<!-- AJAX -->
+					</h:inputText>
+					<h:outputText value="#{usuarioBean.textoSenhas}" id="textoSenhas" style="#{usuarioBean.styleMensagemSenha}"/>
+				</h:panelGroup>
+				
+			</h:panelGrid>
+
+			<br/>
+
+			<h:commandButton action="#{usuarioBean.cadastrar()}" value="Cadastrar" />
+			<br/>
+			<br/>
+		</rich:panel>
+		
+		<h:messages style="border:1px;color:red" globalOnly="true" id="mensagens" />
+		
+	</h:form>
+</h:body>
+
+</html>

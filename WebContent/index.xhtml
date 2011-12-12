@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"	
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:rich="http://richfaces.org/rich">
+      
+<h:head><title>Index</title>
+	<link href="./css/styles.css" 
+      	rel="stylesheet" type="text/css"/>
+</h:head>
+
+<h:body>
+	<rich:panel>
+		<h:form>
+				Login: <h:inputText id="login" value="#{usuarioBean.usuario.login}" label="Login"/>
+				
+				<br/>
+				Senha: <h:inputSecret id="senha" value="#{usuarioBean.usuario.senha}" label="Senha"/>
+				
+				<h:commandButton action="#{usuarioBean.logar}" value="Logar"/>
+				<br/><br/>
+				
+		</h:form>
+		Não é um usuário cadastrado? clique <a href="cadastroUsuario.jsf">aqui</a>.
+			
+		<h:messages id="mensagens"/>
+		
+	</rich:panel>
+</h:body>
+
+</html>
